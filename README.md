@@ -1,6 +1,6 @@
 # [Server-Timing](https://w3c.github.io/server-timing/) response headers for Apollo Server
 
-This Apollo Server plugin improves GraphQL observability characteristics by including resolver execution timing information in built-in browser dev tools. By leverage the Apollo-provided instrumentation from the tracing extension, we can augment response headers via this plugin to expose the timing to Dev Tools.
+This Apollo Server plugin aims to improve GraphQL observability characteristics by exposing resolver execution [timing information](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-tracing) to standard browser developer tools via HTTP response headers. 
 
 Caveat: This plugin has the potential to create large response headers; it's probably best to use as a development aid rather than indiscriminately in production.
 
