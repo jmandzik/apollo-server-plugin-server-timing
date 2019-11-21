@@ -1,0 +1,36 @@
+{
+  "name": "@jmandzik/apollo-server-plugin-server-timing",
+  "version": "0.1.0",
+  "description": "Adds server-timing response headers for Apollo Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jmandzik/apollo-server-plugin-server-timing.git"
+  },
+  "keywords": [
+    "Apollo",
+    "server",
+    "plugin",
+    "timing"
+  ],
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "author": "Justin Mandzik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmandzik/apollo-server-plugin-server-timing/issues"
+  },
+  "homepage": "https://github.com/jmandzik/apollo-server-plugin-server-timing#readme",
+  "devDependencies": {
+    "apollo-server": "^2.9.11",
+    "eslint": "^6.6.0",
+    "graphql": "^14.5.8",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {}
+}
