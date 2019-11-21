@@ -17,7 +17,6 @@ module.exports = {
         ) {
           return;
         }
-        const roots = new Set();
 
         const resolvers =
           requestContext.response.extensions.tracing.execution.resolvers;
