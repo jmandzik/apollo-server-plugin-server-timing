@@ -12,32 +12,41 @@ module.exports = {
       willSendResponse(requestContext) {
         // No-op if there is no tracing extension
         if (
+          !requestContext ||
+          !requestContext.response ||
           !requestContext.response.extensions ||
           !requestContext.response.extensions.tracing
         ) {
+          // Should we warn here that the plugin's enable but without the required tracing enabled?
           return;
         }
 
-        const resolvers =
-          requestContext.response.extensions.tracing.execution.resolvers;
+        try {
+          const resolvers =
+            requestContext.response.extensions.tracing.execution.resolvers;
 
-        const results = resolvers.reduce(
-          (accumulator, resolver) =>
-            accumulator.set(
-              pathToKey(resolver.path),
-              durationInMS(resolver.duration)
-            ),
-          new Map()
-        );
+          const results = resolvers.reduce(
+            (accumulator, resolver) =>
+              accumulator.set(
+                pathToKey(resolver.path),
+                durationInMS(resolver.duration)
+              ),
+            new Map()
+          );
 
-        const timings = [];
-        for (let [desc, dur] of results) {
-          timings.push(`${desc};dur=${dur}`);
+          const timings = [];
+          for (let [desc, dur] of results) {
+            timings.push(`${desc};dur=${dur}`);
+          }
+
+          requestContext.response.http.headers.set(
+            "Server-Timing",
+            timings.join(",")
+          );
+        } catch (error) {
+          // Never want potential issues in the plugin to stop requests from proceeding
+          console.warn(error.message);
         }
-        requestContext.response.http.headers.set(
-          "Server-Timing",
-          timings.join(",")
-        );
       }
     };
   }
