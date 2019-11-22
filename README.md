@@ -1,10 +1,17 @@
 # [Server-Timing](https://w3c.github.io/server-timing/) response headers for Apollo Server
 
-This Apollo Server plugin aims to improve GraphQL observability characteristics by exposing resolver execution [timing information](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-tracing) to standard browser developer tools via HTTP response headers. 
+This Apollo Server plugin aims to improve GraphQL observability characteristics by exposing resolver execution [timing information](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-tracing) to standard browser developer tools via HTTP response headers.
 
 Caveat: This plugin has the potential to create large response headers; it's probably best to use as a development aid rather than indiscriminately in production.
 
+This serialization of the resolver paths is inspired by @stipson's approach proposed here: https://github.com/apollographql/apollo-server/pull/1490.
+
 ## Quick start
+
+### Pre-requisites
+
+- Node.js v8 LTS or higher
+- Apollo Server v1.1.0 or higher (this plugin requires `tracing: true` for timing instrumentation)
 
 ### Install the dependency:
 
