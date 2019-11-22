@@ -5,6 +5,10 @@
   "main": "index.js",
   "contributors": [
     {
+      "name": "Justin Mandzik",
+      "email": "justin.mandzik@gmail.com"
+    },
+    {
       "name": "Jason Matthews",
       "email": "jason.matthews.dev@gmail.com"
     }
@@ -17,6 +21,9 @@
     "type": "git",
     "url": "git+ssh://git@github.com/jmandzik/apollo-server-plugin-server-timing.git"
   },
+  "engines": {
+    "node": ">=8"
+  },
   "keywords": [
     "Apollo",
     "server",
@@ -27,7 +34,6 @@
     "index.js",
     "README.md"
   ],
-  "author": "Justin Mandzik",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jmandzik/apollo-server-plugin-server-timing/issues"
