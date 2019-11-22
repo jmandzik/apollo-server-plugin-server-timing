@@ -1,9 +1,16 @@
 {
   "name": "@jmandzik/apollo-server-plugin-server-timing",
-  "version": "0.1.1",
+  "version": "0.1.1 ",
   "description": "Adds server-timing response headers for Apollo Server",
   "main": "index.js",
+  "contributors": [
+    {
+      "name": "Jason Matthews",
+      "email": "jason.matthews.dev@gmail.com"
+    }
+  ],
   "scripts": {
+    "prepublishOnly": "standard-version",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,10 +34,20 @@
   },
   "homepage": "https://github.com/jmandzik/apollo-server-plugin-server-timing#readme",
   "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "apollo-server": "^2.9.11",
+    "commitlint": "^8.2.0",
     "eslint": "^6.6.0",
     "graphql": "^14.5.8",
-    "prettier": "^1.19.1"
+    "husky": "^3.1.0",
+    "prettier": "^1.19.1",
+    "standard-version": "^7.0.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
 }
