@@ -12,7 +12,6 @@ module.exports = {
   requestDidStart() {
     return {
       willSendResponse(requestContext) {
-        console.log(http.maxHeaderSize);
         // No-op if there is no tracing extension
         if (
           !requestContext ||
