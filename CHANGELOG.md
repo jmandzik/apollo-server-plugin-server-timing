@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/jmandzik/apollo-server-plugin-server-timing/compare/v0.1.5...v0.1.6) (2019-12-09)
+
+
+### Bug Fixes
+
+* remove console statement ([4167153](https://github.com/jmandzik/apollo-server-plugin-server-timing/commit/4167153941529d7105e74603d6fdadf6625f9917))
+
 ### [0.1.5](https://github.com/jmandzik/apollo-server-plugin-server-timing/compare/v0.1.4...v0.1.5) (2019-12-09)
 
 
