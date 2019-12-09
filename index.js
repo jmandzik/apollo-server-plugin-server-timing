@@ -33,15 +33,21 @@ module.exports = {
               ),
             new Map()
           );
-
+          if (results.size === 0) {
+            return;
+          }
           const timings = [];
           for (let [desc, dur] of results) {
             timings.push(`${desc};dur=${dur}`);
           }
 
+          // As you approach 80kb, default max header lengths start to be a problem.
+          // Truncating to 40kb as a precaution
+          let serverTiming = timings.join(",").substring(0, 40 * 1024);
+
           requestContext.response.http.headers.set(
             "Server-Timing",
-            timings.join(",")
+            serverTiming
           );
         } catch (error) {
           // Never want potential issues in the plugin to stop requests from proceeding
