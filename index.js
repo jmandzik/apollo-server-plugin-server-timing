@@ -1,3 +1,5 @@
+const http = require("http");
+
 function pathToKey(tracingResolverPath) {
   return tracingResolverPath.join(".");
 }
@@ -10,6 +12,7 @@ module.exports = {
   requestDidStart() {
     return {
       willSendResponse(requestContext) {
+        console.log(http.maxHeaderSize);
         // No-op if there is no tracing extension
         if (
           !requestContext ||
@@ -41,9 +44,13 @@ module.exports = {
             timings.push(`${desc};dur=${dur}`);
           }
 
-          // As you approach 80kb, default max header lengths start to be a problem.
-          // Truncating to 40kb as a precaution
-          let serverTiming = timings.join(",").substring(0, 40 * 1024);
+          // As you approach 8kb, default max header lengths start to be a problem under nodejs defaults
+          // Truncating to 1kb less than current max as a precaution
+          const maxLength = http.maxHeaderSize - 1024;
+          if (maxLength <= 0) {
+            return;
+          }
+          let serverTiming = timings.join(",").substring(0, maxLength);
 
           requestContext.response.http.headers.set(
             "Server-Timing",
